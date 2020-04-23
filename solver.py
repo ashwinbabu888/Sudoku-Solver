@@ -20,9 +20,18 @@ def solve(bo):
         row, col = find
 
     for i in range(1, 10):
+        // Munjal: One thing you can do make this faster is to keep track of
+        // possible digits for each cell instead of computing everytime.
+        // You can get quite fancy in how you do this:
+        // 1. Simple version: keep a list of possible digits for each cell
+        // 2. Keep a list of used digits per row, column and sub-grid
+        // 3. Use bits to keep track of which digits are used (or unused).
         if valid(bo, i, (row, col)):
             bo[row][col] = i
 
+            // Munjal: Try one challenge if you are interested: do this without
+            // recursion. Your core logic will be same, just needs a slighly different
+            // approach.
             if solve(bo):
                 return True
 
